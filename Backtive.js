@@ -7,8 +7,11 @@ var Backtive = Backbone.View.extend({
         this.activate = function(options) {
             options || (options={});
             _.defaults(options, {empty : true});
-            if (this.active && !options.force) {
-                return this;
+            if (this.active) {
+                if (!options.force) {
+                    return this;
+                }
+                this.deactivate();
             }
             this.active = true;
             if (options.render) {
@@ -35,10 +38,13 @@ var Backtive = Backbone.View.extend({
     },
     deactivate: function() {
     },
+    empty: function() {
+        this.$el.empty();
+    },
     render: function(options) {
         options || (options={});
         if (options.empty) {
-            this.$el.empty();
+            this.empty();
         }
         return this;
     }
