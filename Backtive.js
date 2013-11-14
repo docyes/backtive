@@ -9,6 +9,9 @@ var Backtive = Backbone.View.extend({
                 return this;
             }
             this.active = true;
+            if (options.show) {
+                this.$el.show();
+            }
             return active.apply(this, arguments);
         };
         this.dactivate = function(options) {
@@ -17,6 +20,9 @@ var Backtive = Backbone.View.extend({
                 return this;
             }
             this.active = false;
+            if (options.hide) {
+                this.$el.hide();
+            }
             return deactivate.apply(this, arguments);
         };
     },
