@@ -13,7 +13,7 @@ var Backtive = Backbone.View.extend({
             if (options.show) {
                 this.$el.show();
             }
-            active.apply(this, arguments);
+            activate.apply(this, arguments);
         };
         this.deactivate = function(options) {
             options || (options={});
