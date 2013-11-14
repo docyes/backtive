@@ -2,7 +2,8 @@ var Backtive = Backbone.View.extend({
     constructor: function() {
         Backbone.View.apply(this, arguments);
         this.active = false;
-        var activate = this.activate;
+        var activate = this.activate,
+            deactivate = this.deactivate;
         this.activate = function(options) {
             options || (options={});
             if (this.active && !options.force) {
@@ -14,7 +15,7 @@ var Backtive = Backbone.View.extend({
             }
             return active.apply(this, arguments);
         };
-        this.dactivate = function(options) {
+        this.deactivate = function(options) {
             options || (options={});
             if (!this.active && !options.force) {
                 return this;
