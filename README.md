@@ -1,4 +1,4 @@
 backtive
 ========
 
-Backbone View Activate
+Backbone View Activation
