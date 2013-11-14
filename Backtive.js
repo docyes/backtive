@@ -10,6 +10,9 @@ var Backtive = Backbone.View.extend({
                 return this;
             }
             this.active = true;
+            if (options.render) {
+                this.render({empty: options.empty : false});
+            }
             if (options.show) {
                 this.$el.show();
             }
@@ -30,5 +33,12 @@ var Backtive = Backbone.View.extend({
     activate: function() {
     },
     deactivate: function() {
+    },
+    render: function(options) {
+        options || (options={});
+        if (options.empty) {
+            this.$el.empty();
+        }
+        return this;
     }
 });
