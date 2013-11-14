@@ -27,10 +27,10 @@ var Backtive = Backbone.View.extend({
             return deactivate.apply(this, arguments);
         };
     },
-    activate: function(options) {
+    activate: function() {
         return this;
     },
-    deactivate: function(options) {
+    deactivate: function() {
         return this;
     }
 });
