@@ -60,6 +60,9 @@ var Backtive = Backbone.View.extend({
         var events,
             others = ['model', 'collection'];
         for (var other in others) {
+            if (!this[other]) {
+                continue;
+            }
             this.stopListening(this[other]);
         }
     },
