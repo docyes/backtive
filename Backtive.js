@@ -35,8 +35,33 @@ var Backtive = Backbone.View.extend({
         };
     },
     activate: function() {
+        var events,
+            others = ['model', 'collection'];
+        for (var other in others) {
+            if (!this[other]) {
+                continue;
+            }
+            events = this[other + 'Events'];
+            if (events) {
+                for (var event in events) {
+                    var method = events[event];
+                    if (!_.isFunction(method)) {
+                        method = this[method];
+                    }
+                    if (!method) {
+                        continue;
+                    }
+                    this.listenTo(this[other], event, method);
+                }
+            }
+        }
     },
     deactivate: function() {
+        var events,
+            others = ['model', 'collection'];
+        for (var other in others) {
+            this.stopListening(this[other]);
+        }
     },
     empty: function() {
         this.$el.empty();
